@@ -1,4 +1,4 @@
-package com.study.jingyongxuan.mvpproject;
+package com.study.jingyongxuan.mvpproject.base;
 
 import android.app.Application;
 
@@ -9,15 +9,15 @@ import com.squareup.leakcanary.LeakCanary;
  * date:18-9-21
  * desc:初始化应用只需要初始化一次的内容
  */
-public class MyApp extends Application {
-    private static MyApp instance;
+public class MyApplication extends Application {
+    private static MyApplication instance;
 
-    public MyApp getInstance() {
+    public MyApplication getInstance() {
         return instance;
     }
 
-    public static void setInstance(MyApp instance) {
-        MyApp.instance = instance;
+    public static void setInstance(MyApplication instance) {
+        MyApplication.instance = instance;
     }
 
     @Override
