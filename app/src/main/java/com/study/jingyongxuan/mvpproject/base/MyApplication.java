@@ -12,7 +12,7 @@ import com.squareup.leakcanary.LeakCanary;
 public class MyApplication extends Application {
     private static MyApplication instance;
 
-    public MyApplication getInstance() {
+    public static MyApplication getInstance() {
         return instance;
     }
 
