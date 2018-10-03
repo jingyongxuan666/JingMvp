@@ -7,8 +7,11 @@ import android.widget.TextView;
 
 import com.study.jingyongxuan.mvpproject.base.BaseActivity;
 
+import butterknife.BindView;
+
 public class MainActivity extends BaseActivity {
-    private TextView textView;
+    @BindView(R.id.textView)
+    TextView mTxt;
 
     @Override
     protected int getLayoutId(Bundle savedInstanceState) {
@@ -18,20 +21,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        textView = findViewById(R.id.textView);
-        setOnClick(textView);
     }
 
-
-
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        switch (v.getId()) {
-            case R.id.textView:
-                break;
-            default:
-                break;
-        }
-    }
 }

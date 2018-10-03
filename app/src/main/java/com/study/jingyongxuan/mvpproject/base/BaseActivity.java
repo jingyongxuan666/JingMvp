@@ -1,7 +1,6 @@
 package com.study.jingyongxuan.mvpproject.base;
 
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -9,8 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.StringRes;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -25,9 +25,11 @@ import com.study.jingyongxuan.mvpproject.utils.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.yokeyword.fragmentation.SupportActivity;
 
-public abstract class BaseActivity extends SupportActivity implements BaseView, View.OnClickListener {
+public abstract class BaseActivity extends SupportActivity implements BaseView {
 
     private AlertDialog loadingDialog;
     public static List<BaseActivity> activities = new ArrayList<>();
@@ -55,11 +57,11 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
             View rootView = getLayoutInflater().inflate(layoutId, rootLayout, true);
             setContentView(rootView);
         }
+        ButterKnife.bind(this);
         stateBar();
         initView();
         initToolbar(toolbar);
         initData();
-        setOnClick(R.id.txt_back_base);
     }
 
     /**
@@ -100,32 +102,28 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
         actionBar.hide();
     }
 
-    public BaseActivity setOnClick(View... views) {
-        for (View view : views) {
-            view.setOnClickListener(this);
-        }
-        return this;
-    }
-
-    public BaseActivity setOnClick(@IdRes int... ids) {
-        View view;
-        for (int id : ids) {
-            view = findViewById(id);
-            if (view != null) {
-                view.setOnClickListener(this);
-            }
-        }
-        return this;
+    @OnClick(R.id.txt_back_base)
+    public void goBack() {
+        onBackPressedSupport();
     }
 
     /**
      * 设置title
-     *
      * @param title
      * @return
      */
     public BaseActivity setTitleTxt(CharSequence title) {
         toolbarTitle.setText(title);
+        return this;
+    }
+
+    /**
+     * 设置title
+     * @param resId
+     * @return
+     */
+    public BaseActivity setTitleTxt(@StringRes int resId) {
+        toolbarTitle.setText(resId);
         return this;
     }
 
@@ -163,6 +161,85 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
      */
     public BaseActivity setToolbarBg(@DrawableRes int drawableId){
         toolbar.setBackgroundResource(drawableId);
+        return this;
+    }
+
+    /**
+     * back设置背景资源文件
+     * @param drawableId
+     * @return
+     */
+    public BaseActivity setLeftBg(@DrawableRes int drawableId){
+        if (txtBack != null) {
+            txtBack.setBackgroundResource(drawableId);
+        }
+        return this;
+    }
+
+    /**
+     * 左侧设置内容
+     * @param text
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public BaseActivity setLeftTxt(String text){
+        if (txtBack != null) {
+            txtBack.setBackground(null);
+            txtBack.setText(text);
+        }
+        return this;
+    }
+
+    /**
+     * back设置内容
+     * @param id
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public BaseActivity setLeftTxt(@StringRes int id){
+        if (txtBack != null) {
+            txtBack.setBackground(null);
+            txtBack.setText(id);
+        }
+        return this;
+    }
+    /**
+     * more设置背景资源文件
+     * @param drawableId
+     * @return
+     */
+    public BaseActivity setRightBg(@DrawableRes int drawableId){
+        if (txtMore != null) {
+            txtMore.setBackgroundResource(drawableId);
+        }
+        return this;
+    }
+
+    /**
+     * more设置内容
+     * @param text
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public BaseActivity setRightTxt(String text){
+        if (txtMore != null) {
+            txtMore.setBackground(null);
+            txtMore.setText(text);
+        }
+        return this;
+    }
+
+    /**
+     * more设置内容
+     * @param id
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public BaseActivity setRightTxt(@StringRes int id){
+        if (txtMore != null) {
+            txtMore.setBackground(null);
+            txtMore.setText(id);
+        }
         return this;
     }
 
@@ -224,14 +301,4 @@ public abstract class BaseActivity extends SupportActivity implements BaseView, 
         super.onBackPressedSupport();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.txt_back_base:
-                onBackPressedSupport();
-                break;
-            default:
-                break;
-        }
-    }
 }

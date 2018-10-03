@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/white"
-            android:layout_gravity="left|center_vertical"
-            tools:text="back" />
+            android:background="@drawable/ic_back"
+            android:layout_gravity="left|center_vertical" />
 
         <TextView
             android:id="@+id/txt_title_base"
