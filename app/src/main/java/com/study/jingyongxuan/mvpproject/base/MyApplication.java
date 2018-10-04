@@ -3,6 +3,10 @@ package com.study.jingyongxuan.mvpproject.base;
 import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
+import com.study.jingyongxuan.mvpproject.di.component.AppComponent;
+import com.study.jingyongxuan.mvpproject.di.component.DaggerActivityComponent;
+import com.study.jingyongxuan.mvpproject.di.module.AppModule;
+import com.study.jingyongxuan.mvpproject.di.module.HttpModule;
 
 /**
  * user:jingyongxuan
@@ -11,6 +15,7 @@ import com.squareup.leakcanary.LeakCanary;
  */
 public class MyApplication extends Application {
     private static MyApplication instance;
+    private static AppComponent appComponent;
 
     public static MyApplication getInstance() {
         return instance;
@@ -35,5 +40,12 @@ public class MyApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+    }
+
+    public static synchronized AppComponent getAppComponent() {
+        if (appComponent != null) {
+//            appComponent = DaggerActivityComponent.builder().appModule(new AppModule(getInstance())).httpModule(new HttpModule()).build();
+        }
+        return appComponent;
     }
 }
