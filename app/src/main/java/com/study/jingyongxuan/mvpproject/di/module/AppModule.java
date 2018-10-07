@@ -11,9 +11,9 @@ import dagger.Module;
  */
 @Module
 public class AppModule {
-    private MyApplication myApplication;
+    private MyApplication application;
 
-    public AppModule(MyApplication myApplication) {
-        this.myApplication = myApplication;
+    public AppModule(MyApplication application) {
+        this.application = application;
     }
 }

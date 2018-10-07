@@ -20,6 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.study.jingyongxuan.mvpproject.R;
+import com.study.jingyongxuan.mvpproject.di.component.ActivityComponent;
+import com.study.jingyongxuan.mvpproject.di.component.DaggerActivityComponent;
+import com.study.jingyongxuan.mvpproject.di.module.ActivityModule;
 import com.study.jingyongxuan.mvpproject.utils.ToastUtils;
 
 import java.util.ArrayList;
@@ -299,6 +302,13 @@ public abstract class BaseActivity extends SupportActivity implements BaseView {
     @Override
     public void onBackPressedSupport() {
         super.onBackPressedSupport();
+    }
+
+    protected ActivityComponent getActivityComponent(){
+        return DaggerActivityComponent.builder()
+                .appComponent(MyApplication.getAppComponent())
+                .activityModule(new ActivityModule())
+                .build();
     }
 
 }
