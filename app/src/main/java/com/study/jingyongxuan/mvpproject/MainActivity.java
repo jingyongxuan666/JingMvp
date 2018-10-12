@@ -1,15 +1,15 @@
 package com.study.jingyongxuan.mvpproject;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import com.study.jingyongxuan.mvpproject.base.BaseActivity;
+import com.study.jingyongxuan.mvpproject.base.BaseMvpActivity;
+import com.study.jingyongxuan.mvpproject.contract.MainContract;
+import com.study.jingyongxuan.mvpproject.presenter.MainPresenter;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.IView {
     @BindView(R.id.textView)
     TextView mTxt;
 
@@ -23,6 +23,12 @@ public class MainActivity extends BaseActivity {
         super.initView();
         initToolbar(true,false,true).setTitleTxt(R.string.app_name).setRightTxt(R.string.more);
     }
+
+    @Override
+    protected void initInject() {
+        getActivityComponent().inject(this);
+    }
+
 
 
 }
