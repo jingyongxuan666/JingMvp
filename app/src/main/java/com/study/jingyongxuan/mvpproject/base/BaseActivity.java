@@ -184,10 +184,11 @@ public abstract class BaseActivity extends SupportActivity implements BaseView {
      * @param text
      * @return
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public BaseActivity setLeftTxt(String text){
         if (txtBack != null) {
-            txtBack.setBackground(null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                txtBack.setBackground(null);
+            }
             txtBack.setText(text);
         }
         return this;
@@ -198,10 +199,11 @@ public abstract class BaseActivity extends SupportActivity implements BaseView {
      * @param id
      * @return
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public BaseActivity setLeftTxt(@StringRes int id){
         if (txtBack != null) {
-            txtBack.setBackground(null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                txtBack.setBackground(null);
+            }
             txtBack.setText(id);
         }
         return this;
@@ -223,10 +225,11 @@ public abstract class BaseActivity extends SupportActivity implements BaseView {
      * @param text
      * @return
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public BaseActivity setRightTxt(String text){
         if (txtMore != null) {
-            txtMore.setBackground(null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                txtMore.setBackground(null);
+            }
             txtMore.setText(text);
         }
         return this;
@@ -237,10 +240,11 @@ public abstract class BaseActivity extends SupportActivity implements BaseView {
      * @param id
      * @return
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public BaseActivity setRightTxt(@StringRes int id){
         if (txtMore != null) {
-            txtMore.setBackground(null);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                txtMore.setBackground(null);
+            }
             txtMore.setText(id);
         }
         return this;

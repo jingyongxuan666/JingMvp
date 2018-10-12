@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.study.jingyongxuan.mvpproject.di.component.AppComponent;
-import com.study.jingyongxuan.mvpproject.di.component.DaggerActivityComponent;
 import com.study.jingyongxuan.mvpproject.di.component.DaggerAppComponent;
 import com.study.jingyongxuan.mvpproject.di.module.AppModule;
 import com.study.jingyongxuan.mvpproject.di.module.HttpModule;

@@ -18,30 +18,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:contentInsetStart="0dp"
         app:contentInsetRight="0dp">
+
         <TextView
             android:id="@+id/txt_back_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textColor="@android:color/white"
+            android:layout_gravity="left|center_vertical"
             android:background="@drawable/ic_back"
-            android:layout_gravity="left|center_vertical" />
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="10dp" />
 
         <TextView
             android:id="@+id/txt_title_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
             android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="16dp"
             tools:text="text" />
+
         <TextView
             android:id="@+id/txt_more_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:textColor="@android:color/white"
             android:layout_gravity="right|center_vertical"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="342dp"
+            tools:layout_editor_absoluteY="19dp"
             tools:text="more" />
 
     </android.support.v7.widget.Toolbar>

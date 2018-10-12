@@ -21,6 +21,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
+        initToolbar(true,false,true).setTitleTxt(R.string.app_name).setRightTxt(R.string.more);
     }
+
 
 }
